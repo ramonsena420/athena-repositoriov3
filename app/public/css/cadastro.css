@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+
+body {
+    width: 480px;
+    background-color: #7A29FF;
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap
+}
+
+.logo-2 {
+    width: 270px;
+    margin-top: 150px;
+}
+
+
+#d-cadastro {
+    background-color: white;
+    width: 320px;
+    height: 440px;
+    margin: 0%;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 50px;
+    font-family: 'Outfit', sans-serif;
+
+}
+
+main div h2 {
+    margin: 0%;
+    padding-top: 35px;
+    padding-right: 52%;
+    font-size: x-large;
+}
+
+.input-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0%;
+    font-size: small;
+    font-family: 'Outfit', sans-serif;
+    margin-top: 30px;
+}
+
+.input-email {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0%;
+    font-size: small;
+    font-family: 'Outfit', sans-serif;
+    margin-top: 15px;
+}
+
+.input-senha {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0%;
+    font-size: small;
+    font-family: 'Outfit', sans-serif;
+    margin-top: 15px;
+}
+
+.input-conf-senha {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0%;
+    font-size: small;
+    font-family: 'Outfit', sans-serif;
+    margin-top: 15px;
+}
+
+main div input {
+    width: 250px;
+    height: 30px;
+    border: 0px;
+    border-radius: 8px;
+    background-color: #EEEEEE;
+}
+
+#senha-ex {
+    padding-top: 5px;
+    padding-left: 30px;
+    width: 100px;
+    margin: 0%;
+    font-size: small;
+}
+
+#checkbox-d {
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.checkbox-dd {
+    width: 20px;
+    border-radius: 8px;
+    margin-right: 10px;
+    border: 0px;
+}
+
+#h5-c {
+    margin: 0%;
+    padding-top: 10px;
+}
+
+#button-login {
+    width: 130px;
+    height: 36px;
+    border-radius: 8px;
+    border-color: #7A29FF;
+    border: 2px;
+    border-style: solid;
+    color: #7A29FF;
+    margin-top: 20px;
+    background-color: #FFFFFF;
+    font-weight: 700;
+    font-size: medium;
+    
+}
+
+#button-home {
+    width: 130px;
+    height: 36px;
+    border-radius: 8px;
+    border: 0px;
+    background-color: #7A29FF;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: medium;
+}
+
+a {
+    color: white;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.button-logar {
+    display: flex;
+    flex-direction: row;
+    margin-left: 25px;
+}
+
+.button-cadastro {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-left: 10px;
+}

@@ -1,0 +1,136 @@
+*{
+    font-family: 'Outfit', sans-serif;
+}
+
+#cart-icon {
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #ffff;
+    margin-left: 10px;
+}
+
+.cart {
+    position: fixed;
+    top: 0;
+    width: 260px;
+    min-height: 100vh;
+    right: -100%;
+    padding: 20px;
+    background-color: #ffff;
+    box-shadow: -2px 0 4px hsl(0, 4%, 15% / 10%);
+    transition: 0.5s ease-in-out;
+    font-family: 'Outfit', sans-serif;
+    z-index: 2;
+
+}
+
+.cart.show {
+    right: 0;
+    transition: 0.3 cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.cart.hide {
+    right: -100%;
+    transition: 0.3 cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.cart-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    
+}
+
+.total {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+    border-top: 1px solid #7A29FF;
+    
+}
+
+.total-title{
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.total-price{
+    font-size: 1.075rem;
+    margin: 1rem 0 0 0.7rem;
+}
+
+.btn-buy {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem auto 0 auto;
+    padding: 12px 20px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    border-radius: 2rem;
+    background-color: #7A29FF;
+    color: #ffff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#close-cart {
+    position: absolute;
+    top: 1rem;
+    right: 0.8rem;
+    font-size: 2rem;
+    color: #7A29FF;
+    cursor: pointer;
+}
+
+.cart-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    padding: 10px;
+    border-radius: 5px;
+    object-position: center;
+}
+
+.cart-box {
+    display: grid;
+    grid-template-columns: 32% 50% 18%;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.detail-box {
+    display: grid;
+    row-gap: 0.5rem;
+}
+
+.cart-product-title {
+    font-size: 1rem;
+    font-weight: 500px;
+    text-transform: uppercase;
+}
+
+.cart-price {
+    font-weight: 500;
+}
+
+.cart-quantity {
+    border: 1px solid #7A29FF;
+    outline-color: #7A29FF;
+    width: 2.8rem;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 1rem;
+}
+
+.cart-remove {
+    font-size: 24px;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+    color: #7A29FF;
+    cursor: pointer;
+}
