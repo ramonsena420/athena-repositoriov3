@@ -1,4 +1,4 @@
-DROP DATABASE IF exists `athenashop`;
+DROP DATABASE IF exists `athenashop` ;
 CREATE DATABASE `athenashop`;
 USE `athenashop`;
 
@@ -6,23 +6,15 @@ CREATE TABLE `anunciante` (
   `id_anun` int NOT NULL,
   `nome_anun` varchar(100) NOT NULL,
   `empresa_anun` varchar(100) NOT NULL,
-  `email_anun` varchar(50) NOT NULL,
-  `senha_anun` varchar(50) DEFAULT NULL,
   `cnpj_anun` varchar(50) NOT NULL,
-  `tel_anun` varchar(14) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  id_tipo_usu int(11)
 );
 
-INSERT INTO `anunciante` (`id_anun`, `nome_anun`, `empresa_anun`, `email_anun`, `cnpj_anun`, `tel_anun`,`created_at`) VALUES
-(1, 'Igor Moraes', 'Igor Serviços LTDA', 'igor@gmail.com', '31.139.805/0001-44', '11973438910','2023-06-28 21:13:25');
+INSERT INTO `anunciante` (`id_anun`, `nome_anun`, `empresa_anun`, `cnpj_anun`,`created_at`,`id_tipo_usu`) VALUES
+();
 
-CREATE TABLE `tipo_usu` (
-  `id_tipo_usu` int NOT NULL AUTO_INCREMENT,
-  `tipo_usu` varchar(25) DEFAULT NULL,
-  `descricao_usu` varchar(160) DEFAULT NULL,
-  `status_tipo_usu` int DEFAULT '1',
-  PRIMARY KEY(`id_tipo_usu`)
-)ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS `usuario`;
 
 CREATE TABLE `usuario` (
   `id_usu`int primary key,
@@ -31,124 +23,81 @@ CREATE TABLE `usuario` (
   `email_usu` varchar(60) NOT NULL,
   `senha_usu` varchar(50) NOT NULL,
   `confirmar_usu` varchar(50) NOT NULL,
-  `tipo_usu` int NOT NULL DEFAULT '1',
   `tel_usu` varchar(14) DEFAULT NULL,
   `created_at_usu` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+LOCK TABLES `usuario` WRITE;
+
 INSERT INTO `usuario` (`id_usu`, `nome_usu`, `user_usu`,`email_usu`, `senha_usu`, `confirmar_usu`,`tel_usu`, `created_at_usu`) VALUES
-(1, 'Breno Pasquevitz', 'Pasque','BePasqueTava@gmail.com', '987654','987654','11996307616', '2023-06-28 21:10:31');
+();
 
 ALTER TABLE `anunciante` ADD PRIMARY KEY (`id_anun`);
 
 ALTER TABLE `anunciante` MODIFY `id_anun` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
-CREATE TABLE `pedido`(
-`cod_ped` int(11) primary key NOT NULL,
-`cod_usu` int(11)NOT NULL,
-`valor_total` DOUBLE (9,2)NOT NULL,
-`cod_end_cobr` int(11) NOT NULL,
-`cod_end_ent` int(11) NOT NULL,
-`cod_status` int(11) NOT NULL,
-`data_status` timestamp NOT NULL
-);
+,
+DROP TABLE IF exists `produtos`;
 
 CREATE TABLE `produtos`(
-`id_prod` int primary key,
-`preco_venda` decimal(10,2),
-`min_estoque` smallint,
-`nome_prod` varchar(45),
-`foto` Varchar(45)
+id_prod int(11) primary key,
+cor_prod int(11),
+descr_prod varchar(300),
+tamanho_prod varchar(30),
+estoque varchar(1000),
+preco_prod decimal(10,2),
+FOREIGN KEY (cod_cat_prod) REFERENCES `cat_produto` (cod_cat_prod) 
 );
 
-CREATE TABLE `email`(
-`id_email` varchar(45) primary key
+INSERT INTO  produtos (id_prod, cor_prod, descr_prod, tamanho_prod, estoque, preco_prod, cod_cat_prod) VALUES ();
+
+DROP TABLE IF exists`compra`;
+
+CREATE TABLE `compra`(
+id_compra int(11) primary key,
+Foreing Key (cod_paga) References `tipo_pagamnt`,
+Foreing Key (id_prod) references `produtos`,
+Foreing key (cep) references `endereco`,
+rast_compra int(11),
+status_compra int(25)
 );
 
-CREATE TABLE `telefone`(
-`num_cel` varchar(14) primary key
-);
+INSERT INTO compra (id_compra, cod_paga, id_prod, cep, rast_compra, status_compra) VALUES ();
 
-CREATE TABLE `venda`(
-`data_venda` date,
-`ìd_venda` int(11) primary key,
-`vlr_venda` decimal(8,2)
-);
-
-CREATE TABLE`venda_itens`(
-`id_venda_itens` int primary key,
-`quant_itens` int,
-`preco_custo` varchar(10),
-`preco_uni` decimal(10,2)
-);
-
-CREATE TABLE `cartao_debito`(
-`num_cartao`int	(16) primary key,
-`nome_cart` varchar(50),
-`validade_cart`date,
-`cvv` numeric(3)
-);
-
-CREATE TABLE `cartao_credito`(
-`num_cartao_credito`int	(16) primary key,
-`nome_cart_credito` varchar(50),
-`validade_cart_credito`date,
-`cvv_credito`numeric(3)
-);
-
-CREATE TABLE `entrega`(
-`cod_entrega` int(11) primary key,
-`previsao` date,
-`cod_status` int(11),
-`data_status` timestamp	
-);
+DROP TABLE IF exists`tipo_pagamnt`;
 
 CREATE TABLE `tipo_pagamnt`(
-`cod_tipo_pagmt` int(11) primary key NOT NULL,      
-`nome_tipo_pagmt` varchar(45) NOT NULL
+cod_paga int(11) primary key,
+cartao_debito int (12),
+cartao_credito int(12),
+pix int(20),
+dinheiro decimal (10,2)
 );
 
-CREATE TABLE `tracking`(
-`id_track` int primary key,
-`nome_produto` varchar(45),
-`descricao_produto` varchar(45),
-`cod_barra_prod` varchar(45)
-);
+INSERT tipo_pagamnt (cod_paga, cartao_debito, cartao_credito, pix, dinheiro) VALUES ();
 
-CREATE TABLE `status`(
-
-);
+DROP TABLE IF exists`cat_produto`;
 
 CREATE TABLE `cat_produto`(
-`id_cat_prod` int(11) primary key,
-`nome_cat_prod` varchar(50)
+cod_cat_prod
+nome_cat_prod
 );
 
+INSERT INTO cat_produto (cod_cat_prod, nome_cat_prod) VALUES ();
+
+drop table if exists`endereco`;
 
 CREATE TABLE `endereco`(
-
+cep int(11) primary key,
+rua varchar(15),
+municipio varchar(128),
+numb int(11),
+comple varchar(250),
+bairro int(9),
+estado char (2)
 );
 
-CREATE TABLE `bairro`(
+INSERT INTO endereco (cep,rua,municipio,numb,comple,bairro,estado) VALUES ();
 
-);
-
-CREATE TABLE `cidade`(
-
-);
-
-CREATE TABLE `estado`(
-
-);
-
-CREATE TABLE `servico`(
-
-);
-
-CREATE TABLE `solicitante`(
-
-);
-
-CREATE TABLE `ponto`(
-
-);
+select * from usuario
+select * from anunciante 
+select * from endereco
