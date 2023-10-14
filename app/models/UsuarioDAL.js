@@ -17,7 +17,7 @@ module.exports = class UsuarioDAL {
 
     findUserEmail(camposForm) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("SELECT * FROM usuario WHERE user_usu = ? or email_usu = ?", [camposForm.user_usu, camposForm.user_email], function (error, elements) {
+            this.conexao.query("SELECT * FROM usuario WHERE user_usu = ? or email_usu = ?", [camposForm.user_usu, camposForm.email_usu], function (error, elements) {
                 if (error) {
                     return reject(error);
                 }
