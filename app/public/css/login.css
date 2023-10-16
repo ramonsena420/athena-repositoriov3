@@ -16,24 +16,17 @@ header {
 }
 
 main {
+   padding: 20px;
+}
+
+form {
+    background-color: #fff;
+    border-radius: 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-}
-
-#d-login form {
-
-}
-
-#d-login {
     text-align: center;
-    background-color: white;
-    width: 90%;
-    border-radius: 10px;
-    font-family: 'Outfit', sans-serif;
-    margin: 0px;
 }
 
 #d-login h2 {

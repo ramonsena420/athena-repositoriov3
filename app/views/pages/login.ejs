@@ -43,47 +43,45 @@
             }
     %>
         <form action="/login" method="post">
-            <div id="d-login">
-                <h2>Entrar</h2>
+            <h2>Entrar</h2>
 
-                <label for="t-email"></label>
-                <input type="email" name="t-email" id="t-email" value="<%= valores.temail %>"
-                    placeholder="E-mail" class="<%= avisoErro.temail%>" required>
-                <span>
-                    <%= msgErro.temail %>
-                </span>
+            <label for="t-email"></label>
+            <input type="email" name="t-email" id="t-email" value="<%= valores.temail %>"
+                placeholder="E-mail" class="<%= avisoErro.temail%>" required>
+            <span>
+                <%= msgErro.temail %>
+            </span>
 
-                <label for="t-senha"></label>
-                <input type="password" name="t-senha" id="t-senha" value="<%= valores.tsenha %>"
-                    placeholder="Senha" class="<%= avisoErro.tsenha %>" required>
-                <span>
-                    <%= msgErro.tsenha %>
-                </span>
+            <label for="t-senha"></label>
+            <input type="password" name="t-senha" id="t-senha" value="<%= valores.tsenha %>"
+                placeholder="Senha" class="<%= avisoErro.tsenha %>" required>
+            <span>
+                <%= msgErro.tsenha %>
+            </span>
 
-                <a href="">
-                    <h5 id="senha-ex">Esqueci a senha</h5>
-                </a>
+            <a href="">
+                <h5 id="senha-ex">Esqueci a senha</h5>
+            </a>
 
-                <div id="checkbox-d">
-                    <input type="checkbox" name="Lembrar" class="checkbox-dd">
-                    <h4 id="h5-c">Lembrar conta</h4>
+            <div id="checkbox-d">
+                <input type="checkbox" name="Lembrar" class="checkbox-dd">
+                <h4 id="h5-c">Lembrar conta</h4>
+            </div>
+
+
+            <div class="button">
+
+                <div class="button-cadastro">
+
+                    <button onclick="window.location = '/cadastro' " type="button" id="button-cadastro"> Cadastrar
+                    </button>
+
                 </div>
 
+                <div class="button-logar">
 
-                <div class="button">
+                    <button type="submit" id="button-login"> Logar </button>
 
-                    <div class="button-cadastro">
-
-                        <button onclick="window.location = '/cadastro' " type="button" id="button-cadastro"> Cadastrar
-                        </button>
-
-                    </div>
-
-                    <div class="button-logar">
-
-                        <button type="submit" id="button-login"> Logar </button>
-
-                    </div>
                 </div>
             </div>
         </form>
