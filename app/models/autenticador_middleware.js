@@ -22,8 +22,8 @@ function gravarUsuAutenticado(usuarioDAL, bcrypt) {
         erros = validationResult(req)
         if (erros.isEmpty()) {
             var dadosForm = {
-                email_usuario: req.body.t-email,
-                senha_usuario: req.body.t-senha
+                email_usuario: req.body.temail,
+                senha_usuario: req.body.tsenha
             };
             var results = await usuarioDAL.findUserEmail(dadosForm);
             var total = Object.keys(results).length;

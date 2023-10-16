@@ -3,28 +3,38 @@ CREATE DATABASE `athenashop`;
 USE `athenashop`;
 
 CREATE TABLE `anunciante` (
-  `id_anun` int NOT NULL,
-  `nome_anun` varchar(100) NOT NULL,
-  `empresa_anun` varchar(100) NOT NULL,
-  `cnpj_anun` varchar(50) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  id_tipo_usu int(11)
+  id_anun int NOT NULL,
+  nome_anun varchar(100) NOT NULL,
+  empresa_anun varchar(100) NOT NULL,
+  cnpj_anun varchar(50) NOT NULL,
+  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  id_tipo_usu int(11) foreign key 
 );
 
 INSERT INTO `anunciante` (`id_anun`, `nome_anun`, `empresa_anun`, `cnpj_anun`,`created_at`,`id_tipo_usu`) VALUES
 ();
 
+DROP TABLE IF EXISTS `tipo_usuario`;
+
+CREATE TABLE `tipo_usuario` (
+  id_tipo_usu int(11) primary key,
+  tipo_usu varchar(25) DEFAULT NULL,
+  descricao_usu varchar(155) DEFAULT NULL,
+  status_tipo_usu int DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 DROP TABLE IF EXISTS `usuario`;
 
 CREATE TABLE `usuario` (
-  `id_usu`int primary key,
-  `nome_usu` varchar(45) NOT NULL,
-  `user_usu` varchar(45) NOT NULL,
-  `email_usu` varchar(60) NOT NULL,
-  `senha_usu` varchar(50) NOT NULL,
-  `confirmar_usu` varchar(50) NOT NULL,
-  `tel_usu` varchar(14) DEFAULT NULL,
-  `created_at_usu` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  id_usu int primary key,
+  nome_usu varchar(45) NOT NULL,
+  user_usu varchar(45) NOT NULL,
+  email_usu varchar(60) NOT NULL,
+  senha_usu varchar(50) NOT NULL,
+  confirmar_usu varchar(50) NOT NULL,
+  tel_usu varchar(14) DEFAULT NULL,
+  created_at_usu timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  id_tipo_usu int(11) foreign key 
 );
 
 LOCK TABLES `usuario` WRITE;
@@ -99,5 +109,3 @@ estado char (2)
 INSERT INTO endereco (cep,rua,municipio,numb,comple,bairro,estado) VALUES ();
 
 select * from usuario
-select * from anunciante 
-select * from endereco
