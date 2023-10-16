@@ -8,4 +8,6 @@ module.exports = function(){
         database:"athenashop",
         port: 3306
     });
-}
+
+};
+

@@ -24,58 +24,56 @@
     </header>
 
     <main>
-        <%
-        let avisoErro = {"nomeUsu":"", "senhaUsu":"", "emailUsu":"", "confSenhaUsu":""};
-        let  msgErro = {"nomeUsu":"", "senhaUsu":"", "emailUsu":"", "confSenhaUsu":""};
-        if(listaErros){
-            listaErros.errors.forEach(function(itemErro){
-                if(itemErro.path == "nomeUsu"){
+
+        <% 
+        let avisoErro = {nomeUsu:"", senhaUsu:"", emailUsu:""};
+        let msgErro = {nomeUsu:"", senhaUsu:"", emailUsu:""};
+
+        if (listaErros) {
+            listaErros.errors.forEach(function(itemErro) {
+                if (itemErro.param == "nomeUsu") {
                     avisoErro.nomeUsu = "erro";
-                    msgErro.nomeUsu = itemErro.msg
+                    msgErro.nomeUsu = itemErro.msg;
                 }
-                if(itemErro.path == "emailUsu"){
+        
+                if (itemErro.param == "emailUsu") {
                     avisoErro.emailUsu = "erro";
-                    msgErro.emailUsu = itemErro.msg
+                    msgErro.emailUsu = itemErro.msg;
                 }
-                if(itemErro.path == "senhaUsu"){
+
+                if (itemErro.param == "senhaUsu") {
                     avisoErro.senhaUsu = "erro";
-                    msgErro.senhaUsu = itemErro.msg
+                    msgErro.senhaUsu = itemErro.msg;
                 }
-                if(itemErro.path == "confSenhaUsu"){
-                    avisoErro.confSenhaUsu = "erro";
-                    msgErro.copnfSenhaUsu = itemErro.msg
-                }
-            })
+                
+                
+
+            });
         }
-        %>
+    %>
+
         <form action="/cadastro" method="post">
             <div id="d-cadastro">
                 <h2>Cadastrar</h2>
 
 
-                <div class="input-name">
+                <class="input-name">
                     <label for="tnome">Nomeㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</label>
-                    <input type="text" name="tnome" id="tnome" value="<%= valores.nomeUsu %>" class="<%= avisoErro.nomeUsu %>" required>
+                    <input type="text" name="tnome" id="tnome" value="<%= valors.nomeUsu %>" class="<%= avisoErro.nomeUsu %>" required>
                     <span> <%= msgErro.nomeUsu %></span>
                 </div>
 
 
                 <div class="input-email">
                     <label for="temail">Emailㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</label>
-                    <input type="email" name="temail" id="temail" value="<%= valores.emailUsu %>" class="<%= avisoErro.emailUsu %>" required>
+                    <input type="email" name="temail" id="temail" value="<%= valors.emailUsu %>" class="<%= avisoErro.emailUsu %>" required>
                     <span> <%= msgErro.emailUsu %></span>
                 </div>
 
                 <div class="input-senha">
                     <label for="tsenha">Senhaㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</label>
-                    <input type="password" name="tsenha" id="tsenha" value="<%= valores.senhaUsu %>" class="<%= avisoErro.senhaUsu %>" required>
+                    <input type="password" name="tsenha" id="tsenha" value="<%= valors.senhaUsu %>" class="<%= avisoErro.senhaUsu %>" required>
                     <span> <%= msgErro.senhaUsu %></span>
-                </div>
-
-                <div class="input-conf-senha">
-                    <label for="tconfsenha">Confirme a Senhaㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</label>
-                    <input type="password" name="tconfsenha" id="tconfsenha" value="<%= valores.confSenhaUsu %>" class="<%= avisoErro.confSenhaUsu %>" required>
-                    <span> <%= msgErro.confSenhaUsu %></span>
                 </div>
 
                 <div id="checkbox-d">
@@ -103,6 +101,9 @@
         </div>
         </div>
 
+        <script>
+        
+</script>
     </main>
 </body>
 

@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-
 var bcrypt = require("bcryptjs");
 var salt = bcrypt.genSaltSync(10);
 
@@ -16,14 +15,19 @@ const {body, validationResult } = require("express-validator");
 
 router.get("/", verificarUsuAutenticado, function (req, res){
     let objJson = req.session.autenticado;
-    objJson.retorno = null
-    objJson.erros = null
+    objJson.retorno = null;
+    objJson.erros = null;
+    res.locals.erroLogin = null;
     res.render("pages/home", objJson)
 });
+
+
 // ,{ retorno: null, erros: null, }
-router.get("/cadastro", function(req, res){
-    res.render("pages/cadastro", {listaErros:null, valores: {"t-nome":"","t-email":"", "t-senha":"","t-confsenha":""}})}
-);
+router.get('/cadastro', (req, res) => {
+    // Lógica para renderizar a página de cadastro
+    res.locals.erroLogin = null;
+    res.render('pages/cadastro', { listaErros: null, valors: { "nomeUsu":"", "senhaUsu":"", "emailUsu":""} }); // Passe erros ou null, dependendo do seu caso
+});
 
 router.get("/home", verificarUsuAutenticado, function(req, res){
     res.render("pages/home", req.session.autenticado,{retorno: null, erros: null})}
@@ -34,7 +38,7 @@ router.get("/sair", limparSessao, function(req,res){
 })
 
 router.get("/login", function(req, res){
-    res.render("pages/login", {listaErros:null, retorno: null, erros: null,  valores: {"t-senha":"","t-email":""}})}
+    res.render("pages/login", {listaErros:null, retorno: null, erros: null,  valores: {"tsenha":"","temail":""}})}
 );
 
 router.get("/produto", function(req, res){
@@ -98,46 +102,60 @@ router.get("/pagacancelado", function(req, res){
 });
 
 router.get("/addprod", function(req, res){
-    res.render("pages/addprod", {reotrno: null, erros: null})
+    res.render("pages/addprod", {retorno: null, erros: null})
 });
 
-router.post( 
-    "/cadastro",
-    body("d-cadastro"),
-    body("tnome")
-        .isInt({min: 2, max: 40})
-        .withMessage("O nome deve ter no minimo 2 caracteres"),
-    body("temail")
-        .isEmail({min: 5, max: 50})
-        .withMessage("O email deve ser válido"), 
-    body("tsenha")
-        .isStrongPassword()
-        .withMessage("A senha deve ser válida"),
-    body("tconfsenha")
-        .isStrongPassword()
-        .withMessage("A senha deve ser a mesma que a anterior"),
+// Defina o sal para o bcrypt
+const saltRounds = 10;
 
-    async function (req, res){
-        var dadosForm = {
-            user_usu: req.body.tnome,
-            email_usu: req.body.temail,
-            senha_usu: bcrypt.hashSync (req.body.tsenha, salt),
-            confirmar_usu: req.body.tconfSenha,
-        };
-        const erros = validationResult(req);
-        if(!erros.isEmpty()) {
-            return res.render("pages/cadastro", {retorno: null, listaErros: erros, valores: req.body})
-        }
-        try {
-            let create = await usuarioDAL.create(dadosForm);
-            res.redirect("/")
-        } catch (e) {
-            res.render("pages/cadastro", {listaErros: null,retorno: null, valores: req.body})
-        }
-    });
-router.get("/adm", verificarUsuAutorizado([2, 3], "pages/restrito"), function(req,res){
-    res.render("pages/adm", req.session.autenticado);
-});
+router.post(
+  '/cadastro',
+  [
+    body('tnome')
+      .isLength({ min: 2, max: 40 })
+      .withMessage('O nome deve ter entre 2 e 40 caracteres'),
+    body('temail')
+      .isEmail()
+      .withMessage('O email deve ser válido')
+      .isLength({ min: 5, max: 50 }),
+    body('tsenha')
+      .isStrongPassword()
+      .withMessage('A senha deve ser válida'),
+  ],
+  async function (req, res) {
+    const erros = validationResult(req);
+
+    if (!erros.isEmpty()) {
+      return res.render('pages/cadastro', {
+        retorno: null,
+        listaErros: erros.array(),
+        valors: req.body,
+      });
+    }
+
+    try {
+      const dadosForm = {
+        user_usu: req.body.tnome,
+        email_usu: req.body.temail,
+        senha_usu: bcrypt.hashSync(req.body.tsenha, saltRounds)
+      };
+
+      // Supondo que "usuarioDAL.create" seja a função que insere os dados no banco de dados.
+      // Certifique-se de tratá-la adequadamente no seu código.
+
+      // const create = await usuarioDAL.create(dadosForm);
+
+      // Após inserir os dados no banco de dados, você pode redirecionar o usuário para outra página.
+      res.redirect('/');
+    } catch (e) {
+      res.render('pages/cadastro', {
+        listaErros: null,
+        retorno: null,
+        valors: req.body,
+      });
+    }
+  }
+);
 
 router.post(
     "/login",
