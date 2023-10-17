@@ -1,0 +1,8 @@
+1. Vocês estão tentando cadastrar um usuário na mesma rota "/cadastra", apenas alterando o verbo HTTP para POST sem renderizar
+
+2. No arquivo cadastro.ejs alterei a rota de action do form para "/cadastrar", (um verbo dizendo qual a ação do formulário, no caso, é cadastrar um novo usuário)
+    2.1. Renomeei o name dos inputs pois o user_(qualquer coisa), só complica na hora de modelar o banco de dados
+
+3. Banco de dados
+    3.1 - Criei uma nova tabela chamada "usuarios", pois no banco estava usuarios, no código ele tentava criar em uma tabela chamada "usuario", ou seja, por um "s", não encontrava a tabela
+    3.2 - Alterei a tabela usuario para simplificar, os tipos de dados estavam inválidos pois por exemplo a senha que vocês criptografaram estava maior do que o número de caracteres necessário.

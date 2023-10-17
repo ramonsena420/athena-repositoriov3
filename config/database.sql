@@ -27,15 +27,24 @@ insert into `tipo_usuario` () values ();
 
 DROP TABLE IF EXISTS `usuario`;
 
-CREATE TABLE `usuario` (
-  id_usu int primary key,
-  nome_usu varchar(45) NOT NULL,
-  user_usu varchar(45) NOT NULL,
-  email_usu varchar(60) NOT NULL,
-  senha_usu varchar(50) NOT NULL,
-  tel_usu varchar(14) DEFAULT NULL,
- id_tipo_usu  INT DEFAULT '1',
-  foreign key (id_tipo_usu) references `tipo_usuario` (id_tipo_usu)
+-- CREATE TABLE `usuario` (
+--   id_usu int primary key,
+--   nome_usu varchar(45) NOT NULL,
+--   user_usu varchar(45) NOT NULL,
+--   email_usu varchar(60) NOT NULL,
+--   senha_usu varchar(50) NOT NULL,
+--   tel_usu varchar(14) DEFAULT NULL,
+--  id_tipo_usu  INT DEFAULT '1',
+--   foreign key (id_tipo_usu) references `tipo_usuario` (id_tipo_usu)
+-- );
+
+-- Essa é a correta tabela do banco de dados
+CREATE TABLE usuarios (
+  id int primary key auto_increment,
+  nome varchar(255) NOT NULL,
+  email varchar(60) NOT NULL,
+  senha longtext NOT NULL,
+  telefone varchar(20) DEFAULT NULL
 );
 
 LOCK TABLES `usuario` WRITE;

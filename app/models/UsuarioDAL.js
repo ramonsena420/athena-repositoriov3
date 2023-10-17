@@ -17,7 +17,7 @@ module.exports = class UsuarioDAL {
 
     findUserEmail(camposForm) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("SELECT * FROM usuario WHERE user_usu = ? or email_usu = ?", [camposForm.user_usu, camposForm.email_usu], function (error, elements) {
+            this.conexao.query("SELECT * FROM usuarios WHERE user_usu = ? or email_usu = ?", [camposForm.user_usu, camposForm.email_usu], function (error, elements) {
                 if (error) {
                     return reject(error);
                 }
@@ -39,7 +39,7 @@ module.exports = class UsuarioDAL {
 
     create(camposJson) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("insert into usuario set ?", camposJson, function(error, elements){
+            this.conexao.query("insert into usuarios set ?", camposJson, function(error, elements){
                 if (error) {
                     return reject(error);
                 }
@@ -50,7 +50,7 @@ module.exports = class UsuarioDAL {
 
     update(camposJson) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("UPDATE usuario SET nome_usu = ?, user_usu = ?, senha_usu = ?, " + "email_usu = ?, tel_usu = ?, tipo_usu = ?, status_usu = ? " + "WHERE id_usu = ?", [camposJson.nome_usu, camposJson.user_usu, camposJson.senha_usu, camposJson.email_usu, camposJson.tel_usu, camposJson.tipo_usu, camposJson.status_usu, camposJson.id_usu], function (error, results, fields){
+            this.conexao.query("UPDATE usuarios SET nome_usu = ?, user_usu = ?, senha_usu = ?, " + "email_usu = ?, tel_usu = ?, tipo_usu = ?, status_usu = ? " + "WHERE id_usu = ?", [camposJson.nome_usu, camposJson.user_usu, camposJson.senha_usu, camposJson.email_usu, camposJson.tel_usu, camposJson.tipo_usu, camposJson.status_usu, camposJson.id_usu], function (error, results, fields){
                 if (error){
                     return reject(error);
                 }
@@ -61,7 +61,7 @@ module.exports = class UsuarioDAL {
 
     delete(id) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("UPDATE usuario SET status_usu = 0 WHERE id_usu = ?", [id], function(error, results) {
+            this.conexao.query("UPDATE usuarios SET status_usu = 0 WHERE id_usu = ?", [id], function(error, results) {
                 if (error) {
                     return reject(error);
                 }

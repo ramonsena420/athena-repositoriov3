@@ -109,19 +109,7 @@ router.get("/addprod", function(req, res){
 const saltRounds = 10;
 
 router.post(
-  '/cadastro',
-  [
-    body('tnome')
-      .isLength({ min: 2, max: 40 })
-      .withMessage('O nome deve ter entre 2 e 40 caracteres'),
-    body('temail')
-      .isEmail()
-      .withMessage('O email deve ser válido')
-      .isLength({ min: 5, max: 50 }),
-    body('tsenha')
-      .isStrongPassword()
-      .withMessage('A senha deve ser válida'),
-  ],
+  '/cadastrar',
   async function (req, res) {
     const erros = validationResult(req);
 
@@ -135,17 +123,21 @@ router.post(
 
     try {
       const dadosForm = {
-        user_usu: req.body.tnome,
-        email_usu: req.body.temail,
-        senha_usu: bcrypt.hashSync(req.body.tsenha, saltRounds)
+        nome: req.body.nome,
+        email: req.body.email,
+        senha: bcrypt.hashSync(req.body.senha, saltRounds)
       };
 
-      // Supondo que "usuarioDAL.create" seja a função que insere os dados no banco de dados.
-      // Certifique-se de tratá-la adequadamente no seu código.
+        // Supondo que "usuarioDAL.create" seja a função que insere os dados no banco de dados.
+        // Certifique-se de tratá-la adequadamente no seu código.
 
-      // const create = await usuarioDAL.create(dadosForm);
+        // const create = await usuarioDAL.create(dadosForm);
 
-      // Após inserir os dados no banco de dados, você pode redirecionar o usuário para outra página.
+        // Após inserir os dados no banco de dados, você pode redirecionar o usuário para outra página.
+
+        //   Cadastrar o usuário
+        const create = await usuarioDAL.create(dadosForm);
+
       res.redirect('/');
     } catch (e) {
       res.render('pages/cadastro', {
