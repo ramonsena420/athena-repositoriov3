@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="css/produto480.css">
+    <link rel="stylesheet" href="css/produto.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -24,12 +24,23 @@
 <body>
 
     <header>
+
+        <a href="/">
+            
+            <picture>
+
+                <source media="(max-width: 390px)" srcset="img/logo-icon.png">
+                <source media="(max-width: 479px)" srcset="img/logo-icon.png">
+                <img src="img/logo-letreiro.png" alt="logo-athena" class="logo-athena">
         
-        <a href="/home"><img src="img/logo-letreiro.png" alt="logo-athena" class="logo-athena"></a>
+            </picture>
+        </a>
 
         <input type="search" name="" id="search-bar-header">
+
         
-        <img src="img/profile-user_white.png" alt="perfil" id="profile-user">
+        
+        <a href="/usuario"><img src="img/profile-user_white.png" alt="perfil" id="profile-user"></a>
 
     </header>
    
@@ -49,18 +60,7 @@
             <button id="next-button"><img src="img/horiz-arrow.png" alt="next-button"></button>
         </div>
 
-        <div class="name-prod">
-            <h4 class="nome-produto">Camiseta Lisa Basica FIEB - Algodão </h4>
-            <div class="rating"></div>
-            <div class="price">
-                <h5>R$ 69,90</h5>
-                <h5>Frete gratis</h5>
-            </div>
-        </div>
         
-
-        <div class="no-slider">
-            
             <div class="contador">
                 <p>Quantidade:</p>
                 <button id="diminuir">-</button>
@@ -69,38 +69,7 @@
             </div>
             
 
-            <p><button id="buy-now-button">Comprar agora</button></p>
-
-        
-
-        <div class="info">
-            <p class="txt-info-title">Informações do produto</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Sed bibendum justo vel cursus ultricies. 
-            Nunc posuere erat sed ornare cursus. Lorem ipsum dolor sit amet, 
-            consectetur adipiscing elit. Sed bibendum justo vel cursus ultricies. 
-            Nunc posuere erat sed ornare cursus. Lorem ipsum dolor sit amet, 
-            consectetur adipiscing elit. Sed bibendum justo vel cursus ultricies. 
-            Nunc posuere erat sed ornare cursus.</p>
-        </div>
-    
-        <h3 class="txt-ava">Avaliação</h3>
-
-        <div class="info-avaliacao">
-                <ul class="avaliacao">
-                    <p class="numb-avaliacao">4.0</p>
-                    <li><span class="star-icon">&#9733;</span></li>
-                    <li><span class="star-icon">&#9733;</span></li>
-                    <li><span class="star-icon">&#9733;</span></li>
-                    <li><span class="star-icon">&#9733;</span></li>
-                    <li><span class="star-icon">&#9734;</span> (1001)</li>
-                </ul>
-        </div>
-
-        <button class="button-exb-avaliacao">Exibir Avaliações</button>
-
-        <h3 class="txt-prod-rec">Produtos semelhantes</h3>
-    </div>
+ 
     </main>
 
     <footer>
