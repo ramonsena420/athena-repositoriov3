@@ -1,0 +1,92 @@
+@media (min-width: 320px) and (max-width: 375px) {
+
+body {
+    background-color: #EFEFEF;
+    font-family: 'Outfit', sans-serif;
+}
+
+.container-slider{
+    display: flex;
+    width: 100%;
+    min-height: 40vh;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.container-img {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+}
+
+.slider {
+    opacity: 0;
+    transition: opacity -2s;
+    position: absolute;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.on {
+    opacity: 1;
+}
+
+#prev-button, #next-button{
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#prev-button img, #next-button img{
+    width: 100%;
+    height: 100%;
+}
+
+#next-button img {
+    transform: scaleX(-1);
+}
+
+
+.contador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 2px;
+    border-style: solid;
+    border-color: #7A29FF;
+    border-radius: 10px;
+    width: 80%;
+    margin-top: 15px;
+    font-family: 'Outfit', sans-serif;
+}
+  
+#diminuir, #aumentar {
+    width: 30px;
+    height: 30px;
+    font-size: inherit;
+    font-size: x-large;
+    text-align: center;
+    background-color: transparent;
+    border: 0px;
+}
+  
+#diminuir:hover {
+    cursor: pointer;
+}
+  
+#aumentar:hover {
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
+
+
+}
