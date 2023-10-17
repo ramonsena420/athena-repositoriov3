@@ -43,7 +43,7 @@
             }
     %>
         <form action="/login" method="post">
-            <h2>Entrar</h2>
+            <h2 class="txt">Entrar</h2>
 
             <label for="t-email"></label>
             <input type="email" name="t-email" id="t-email" value="<%= valores.temail %>"
@@ -59,10 +59,11 @@
                 <%= msgErro.tsenha %>
             </span>
 
+        <div class="aling">
             <a href="">
                 <h5 id="senha-ex">Esqueci a senha</h5>
             </a>
-
+        </div>
             <div id="checkbox-d">
                 <input type="checkbox" name="Lembrar" class="checkbox-dd">
                 <h4 id="h5-c">Lembrar conta</h4>
