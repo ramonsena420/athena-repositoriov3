@@ -1,0 +1,47 @@
+body{
+    background: linear-gradient(to bottom, #7A29FF, #361270);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: 'Outfit', sans-serif;
+}
+
+
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    background-color: white;
+    
+}
+
+.delete-button {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+th {
+    background-color: #3f3f3f;
+    color: white;
+}
+tr {
+    border-radius: 10px;
+
+}
+
+h1{
+    text-align: center;
+    color: white;
+    
+}
